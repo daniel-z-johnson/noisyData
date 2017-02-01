@@ -1,4 +1,4 @@
-package con.self.exercise.db.generate.doa;
+package con.self.exercise.db.generate.dao;
 
 import con.self.exercise.db.generate.model.User;
 import org.springframework.data.repository.CrudRepository;
