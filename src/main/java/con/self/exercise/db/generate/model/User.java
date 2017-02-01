@@ -7,11 +7,11 @@ import java.util.UUID;
 /**
  * Created by prime23 on 1/31/17.
  */
-@Entity
+@Entity(name = "noise_users")
 public class User {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(name = "first_name")
