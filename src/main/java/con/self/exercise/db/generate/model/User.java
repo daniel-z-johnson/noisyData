@@ -27,6 +27,12 @@ public class User {
         // empty constructor for hibernate
     }
 
+    public User(String firstName, String lastName, UUID apiKey) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.apiKey = apiKey;
+    }
+
     public Long getId() {
         return id;
     }
@@ -66,7 +72,7 @@ public class User {
 
         User user = (User) o;
 
-        if (id != user.id) return false;
+        if (id != null ? !id.equals(user.id) : user.id != null) return false;
         if (firstName != null ? !firstName.equals(user.firstName) : user.firstName != null) return false;
         if (lastName != null ? !lastName.equals(user.lastName) : user.lastName != null) return false;
         return apiKey != null ? apiKey.equals(user.apiKey) : user.apiKey == null;
@@ -74,7 +80,7 @@ public class User {
 
     @Override
     public int hashCode() {
-        int result = (int) (id ^ (id >>> 32));
+        int result = id != null ? id.hashCode() : 0;
         result = 31 * result + (firstName != null ? firstName.hashCode() : 0);
         result = 31 * result + (lastName != null ? lastName.hashCode() : 0);
         result = 31 * result + (apiKey != null ? apiKey.hashCode() : 0);
