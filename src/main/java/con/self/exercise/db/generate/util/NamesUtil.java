@@ -18,7 +18,7 @@ public final class NamesUtil {
     }
 
     public static List<String> firstNames() throws IOException {
-        List<String> names = new ArrayList<String>();
+        List<String> names = new ArrayList<>();
         Document doc = Jsoup.connect("https://www.babble.com/pregnancy/1000-most-popular-boy-names/").get();
         Elements list = doc.select("main li");
         for(Element e : list) {
@@ -33,7 +33,7 @@ public final class NamesUtil {
     }
 
     public static List<String> lastNames() throws IOException {
-        List<String> names = new ArrayList<String>();
+        List<String> names = new ArrayList<>();
         Document doc = Jsoup.connect("http://names.mongabay.com/data/1000.html").get();
         Elements list = doc.select("tr td:nth-child(1)");
         for(Element e : list) {

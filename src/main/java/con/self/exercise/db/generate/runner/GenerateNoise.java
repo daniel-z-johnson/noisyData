@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.UUID;
@@ -27,10 +28,14 @@ public class GenerateNoise implements CommandLineRunner {
     public void run(String... strings) throws Exception {
         List<String> firstNames = NamesUtil.firstNames();
         List<String> lastName = NamesUtil.lastNames();
-        for(int i = 0; i < 1000; ++i) {
-            Collections.shuffle(firstNames);
-            Collections.shuffle(lastName);
-            userDao.save(new User(firstNames.get(0), lastName.get(0), UUID.randomUUID()));
+        for(int j = 0; j < 1000; ++j) {
+            List<User> users = new ArrayList<User>();
+            for (int i = 0; i < 10000; ++i) {
+                Collections.shuffle(firstNames);
+                Collections.shuffle(lastName);
+               users.add(new User(firstNames.get(0), lastName.get(0), UUID.randomUUID()));
+            }
+            userDao.save(users);
         }
     }
 }
